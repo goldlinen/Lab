@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dilloploy
+  name: dilloploy
+spec:
+  replicas: 19
+  selector:
+    matchLabels:
+      app: dilloploy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: dilloploy
+    spec:
+      containers:
+        - image: httpd
+          name: httpdaf
